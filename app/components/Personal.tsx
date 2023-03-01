@@ -1,17 +1,14 @@
 "use client";
 
 import { Form, Formik, FormikHelpers, FormikProps } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import Input from "./Input";
 import * as Yup from "yup";
+import { PersonalStepForm } from "../types/type";
+import { StoreContext } from "../utils/store";
+import FormButton from "./FormButton";
 
-type FormType = {
-  name: string;
-  email: string;
-  phoneNumber: string;
-};
-
-const FormSchema = Yup.object().shape({
+const SchemaValidator = Yup.object().shape({
   name: Yup.string()
     .min(0, "Too Short!")
     .max(10, "Too Long!")
@@ -21,8 +18,12 @@ const FormSchema = Yup.object().shape({
 });
 
 const Personal = () => {
+  const {
+    personalStepState: { value: personalStep, setter: setPersonalStep },
+  } = useContext(StoreContext);
+
   return (
-    <div className="relative flex-grow px-10 mx-auto my-8">
+    <div className="relative h-full">
       <div className="space-y-2">
         <div className="text-3xl font-extrabold text-blue-900 tracking-wide">
           Personal info
@@ -31,32 +32,29 @@ const Personal = () => {
           Please provide your name, email address, and phone number.
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-8">
         <Formik
           initialValues={{
-            name: "",
-            email: "",
-            phoneNumber: "",
+            name: personalStep.name,
+            email: personalStep.email,
+            phoneNumber: personalStep.phoneNumber,
           }}
-          validationSchema={FormSchema}
+          validationSchema={SchemaValidator}
           onSubmit={(
-            values: FormType,
-            { setSubmitting }: FormikHelpers<FormType>
+            values: PersonalStepForm,
+            { setSubmitting }: FormikHelpers<PersonalStepForm>
           ) => {
             console.log(values);
+            setPersonalStep(values);
           }}
         >
-          {(props: FormikProps<FormType>) => (
+          {(props: FormikProps<PersonalStepForm>) => (
             <Form className="space-y-5">
               <Input label="Name" name="name" />
               <Input label="Email Address" name="email" />
               <Input label="Phone Number" name="phoneNumber" />
 
-              <div className="w-full h-full flex justify-end items-end">
-                <button className="absolute bottom-0 bg-blue-900 text-white px-5 py-2 rounded-lg">
-                  Next step
-                </button>
-              </div>
+              <FormButton />
             </Form>
           )}
         </Formik>

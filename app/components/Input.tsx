@@ -9,10 +9,6 @@ type InputProps = {
 
 const Input = ({ label, ...props }: InputProps) => {
   const [field, meta, helpers] = useField(props);
-  const [focus, setFocus] = useState(false);
-
-  console.log(meta);
-  console.log(field);
 
   return (
     <div className="relative flex-col w-full space-y-2 items-center justify-center text-blue-900">
@@ -23,7 +19,6 @@ const Input = ({ label, ...props }: InputProps) => {
           {...props}
           className={clsx(
             "w-full px-3 py-2 font-semibold text-sm focus:outline-none rounded-lg border border-blue-900/20",
-            focus && "border-blue-900/100",
             meta.error && meta.touched && "border-red-600"
           )}
         />

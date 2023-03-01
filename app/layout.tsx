@@ -1,4 +1,7 @@
+"use client";
+
 import "./globals.css";
+import StoreProvider from "./utils/store";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="h-screen bg-sky-50 body-font font-ubuntu">
-          {children}
+          <StoreProvider>{children}</StoreProvider>
         </div>
       </body>
     </html>
