@@ -4,9 +4,9 @@ import { Form, Formik, FormikHelpers, FormikProps } from "formik";
 import React, { useContext } from "react";
 import Input from "./Input";
 import * as Yup from "yup";
-import { PersonalStepForm } from "../types/type";
-import { StoreContext } from "../utils/store";
-import FormButton from "./FormButton";
+import { PersonalStepForm } from "../../types/type";
+import { StoreContext } from "../../utils/store";
+import Title from "../Title";
 
 const SchemaValidator = Yup.object().shape({
   name: Yup.string()
@@ -22,16 +22,14 @@ const Personal = () => {
     personalStepState: { value: personalStep, setter: setPersonalStep },
   } = useContext(StoreContext);
 
+  console.log(personalStep);
+
   return (
     <div className="relative h-full">
-      <div className="space-y-2">
-        <div className="text-3xl font-extrabold text-blue-900 tracking-wide">
-          Personal info
-        </div>
-        <div className="text-sm text-gray-400/80">
-          Please provide your name, email address, and phone number.
-        </div>
-      </div>
+      <Title
+        title="Personal info"
+        subTitle="Please provide your name, email address, and phone number."
+      />
       <div className="mt-8">
         <Formik
           initialValues={{
@@ -40,12 +38,16 @@ const Personal = () => {
             phoneNumber: personalStep.phoneNumber,
           }}
           validationSchema={SchemaValidator}
-          onSubmit={(
+          onSubmit={async (
             values: PersonalStepForm,
             { setSubmitting }: FormikHelpers<PersonalStepForm>
           ) => {
             console.log(values);
+            setSubmitting(true);
+
             setPersonalStep(values);
+
+            setSubmitting(false);
           }}
         >
           {(props: FormikProps<PersonalStepForm>) => (
@@ -53,8 +55,6 @@ const Personal = () => {
               <Input label="Name" name="name" />
               <Input label="Email Address" name="email" />
               <Input label="Phone Number" name="phoneNumber" />
-
-              <FormButton />
             </Form>
           )}
         </Formik>

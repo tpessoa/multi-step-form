@@ -17,7 +17,7 @@ const Stepper = () => {
           <Tab
             key={index}
             number={index + 1}
-            name={STEPS[index]}
+            name={step}
             selected={index === currentStep}
           />
         ))}
