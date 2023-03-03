@@ -5,7 +5,8 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import { PersonalStepForm } from "../types/type";
+import { display, PersonalStepForm, PlanStepForm } from "../types/type";
+import { planCardsData } from "./data";
 
 type State<T> = {
   value: T;
@@ -15,6 +16,7 @@ type State<T> = {
 type StoreContext = {
   currentStepState: State<number>;
   personalStepState: State<PersonalStepForm>;
+  planStepState: State<PlanStepForm>;
 };
 
 export const StoreContext = createContext<StoreContext>({} as StoreContext); //just a dummy cast for initialization
@@ -26,6 +28,13 @@ const StoreProvider = ({ children }: PropsWithChildren) => {
     email: "",
     phoneNumber: "",
   });
+  const selectedPlanIndex =
+    planCardsData.findIndex((plan) => plan.selected) ?? 0;
+  const [planStep, setPlanStep] = useState<PlanStepForm>({
+    name: planCardsData[selectedPlanIndex].name,
+    plan: display.MONTHLY,
+    price: planCardsData[selectedPlanIndex][display.MONTHLY].price,
+  });
 
   const store: StoreContext = {
     currentStepState: {
@@ -35,6 +44,10 @@ const StoreProvider = ({ children }: PropsWithChildren) => {
     personalStepState: {
       value: personalStep,
       setter: setPersonalStep,
+    },
+    planStepState: {
+      value: planStep,
+      setter: setPlanStep,
     },
   };
 

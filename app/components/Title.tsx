@@ -7,11 +7,11 @@ type TitleProps = {
 
 const Title = ({ title, subTitle }: TitleProps) => {
   return (
-    <div className="w-full space-y-2 text-left">
-      <div className="text-3xl font-extrabold text-blue-900 tracking-wide">
+    <div className="space-y-2 text-left">
+      <h2 className="text-3xl font-extrabold tracking-wide text-blue-900">
         {title}
-      </div>
-      <div className="text-sm text-gray-400/80">{subTitle}</div>
+      </h2>
+      <h3 className="text-sm text-gray-400/80">{subTitle}</h3>
     </div>
   );
 };

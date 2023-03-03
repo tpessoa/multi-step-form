@@ -11,7 +11,7 @@ const Stepper = () => {
     currentStepState: { value: currentStep },
   } = useContext(StoreContext);
   return (
-    <div className="w-56 bg-cover bg-sidebar-desktop rounded-xl flex">
+    <div className="h-full w-60 rounded-xl bg-sidebar-desktop bg-cover bg-bottom">
       <div className="flex-row space-y-8 px-8 py-7">
         {STEPS.map((step, index) => (
           <Tab

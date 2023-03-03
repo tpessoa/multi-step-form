@@ -1,66 +1,58 @@
-import { Switch } from "@headlessui/react";
+import { display } from "@/app/types/type";
+import { planCardsData } from "@/app/utils/data";
+import { StoreContext } from "@/app/utils/store";
+import { Switch, Tab } from "@headlessui/react";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Title from "../Title";
 import PlanCard, { PlanCardProps } from "./PlanCard";
-
-const cards: PlanCardProps[] = [
-  {
-    icon: "icon-arcade.svg",
-    name: "Arcade",
-    monthly: { price: 9 },
-    yearly: {
-      freeMonths: 2,
-      price: 90,
-    },
-    display: "monthly",
-  },
-  {
-    icon: "icon-advanced.svg",
-    name: "Advanced",
-    monthly: { price: 12 },
-    yearly: {
-      freeMonths: 2,
-      price: 120,
-    },
-    display: "monthly",
-  },
-  {
-    icon: "icon-pro.svg",
-    name: "Pro",
-    monthly: { price: 15 },
-    yearly: {
-      freeMonths: 2,
-      price: 150,
-    },
-    display: "monthly",
-  },
-];
+import SwitchLabel from "./SwitchLabel";
 
 const Plan = () => {
   const [enabled, setEnabled] = useState(false);
+  const {
+    planStepState: { value: planStep, setter: setPlanStep },
+  } = useContext(StoreContext);
 
   function changeCardsDisplay(display: PlanCardProps["display"]) {
-    cards.map((card) => (card.display = display));
+    planCardsData.map((card) => (card.display = display));
   }
 
   function enableSwitch(enabled: boolean) {
-    changeCardsDisplay(enabled ? "yearly" : "monthly");
+    changeCardsDisplay(enabled ? display.YEARLY : display.MONTHLY);
     setEnabled(enabled);
   }
+  const selectedPlanIndex =
+    planCardsData.findIndex((plan) => plan.selected) ?? 0;
 
   return (
-    <div className="relative h-full">
+    <div>
       <Title
         title="Select your plan"
         subTitle="You have the option of monthly or yearly billing."
       />
       <div className="inline-block space-y-8">
-        <div className="mt-10 inline-flex space-x-4">
-          {cards.map((card, index) => (
-            <PlanCard key={index} {...card} />
-          ))}
-        </div>
+        <Tab.Group
+          defaultIndex={selectedPlanIndex}
+          onChange={(index) => {
+            const plan = enabled ? display.YEARLY : display.MONTHLY;
+            setPlanStep({
+              name: planCardsData[index].name,
+              plan: plan,
+              price: planCardsData[index][plan].price,
+            });
+          }}
+        >
+          <Tab.List className="mt-10 inline-flex space-x-4">
+            {planCardsData.map((card, index) => (
+              <Tab key={index} className="focus:outline-none">
+                {({ selected }) => (
+                  <PlanCard key={index} {...card} selected={selected} />
+                )}
+              </Tab>
+            ))}
+          </Tab.List>
+        </Tab.Group>
         <div className="flex">
           <div className="inline-flex flex-grow justify-center space-x-6 rounded-lg bg-gray-100/50 p-4">
             <SwitchLabel label="Monthly" disabled={enabled} />
@@ -85,23 +77,6 @@ const Plan = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-type SwitchLabelProps = {
-  label: string;
-  disabled: boolean;
-};
-const SwitchLabel = ({ label, disabled }: SwitchLabelProps) => {
-  return (
-    <span
-      className={clsx(
-        "flex items-center justify-center text-sm font-semibold",
-        disabled && "opacity-30"
-      )}
-    >
-      {label}
-    </span>
   );
 };
 

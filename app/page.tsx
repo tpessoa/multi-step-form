@@ -17,10 +17,12 @@ export default function Home() {
   }
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
-      <div className="flex w-11/12 md:inline-flex h-3/5 bg-white rounded-xl p-4">
-        <Stepper />
-        <div className="flex-grow px-10 py-8">{step}</div>
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="container flex h-3/5 max-w-4xl rounded-xl bg-white p-4 md:inline-flex">
+        <div className="block">
+          <Stepper />
+        </div>
+        <div className="flex w-full justify-center px-10 py-8">{step}</div>
       </div>
     </div>
   );
