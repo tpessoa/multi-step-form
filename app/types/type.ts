@@ -4,13 +4,17 @@ export type PersonalStepForm = {
   phoneNumber: string;
 };
 
+export enum display {
+  MONTHLY = "monthly",
+  YEARLY = "yearly",
+}
 export type PlanStepForm = {
   name: string;
   plan: display;
   price: number;
 };
 
-export enum display {
-  MONTHLY = "monthly",
-  YEARLY = "yearly",
-}
+export type AddOnStepForm = {
+  name: string;
+  price: number;
+};

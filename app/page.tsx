@@ -1,6 +1,7 @@
 "use client";
 
 import { useContext } from "react";
+import AddOns from "./components/add-ons/AddOns";
 import Personal from "./components/info/Personal";
 import Plan from "./components/plan/Plan";
 import Stepper from "./components/stepper/Stepper";
@@ -14,6 +15,8 @@ export default function Home() {
   let step = <Personal />;
   if (currentStep === 1) {
     step = <Plan />;
+  } else if (currentStep === 2) {
+    step = <AddOns />;
   }
 
   return (

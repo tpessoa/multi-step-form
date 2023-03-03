@@ -1,3 +1,4 @@
+import { AddOnCardProps } from "../components/add-ons/AddOnCard";
 import { PlanCardProps } from "../components/plan/PlanCard";
 import { display } from "../types/type";
 
@@ -34,5 +35,38 @@ export const planCardsData: PlanCardProps[] = [
     },
     display: display.MONTHLY,
     selected: false,
+  },
+];
+
+export const addOnCardsData: AddOnCardProps[] = [
+  {
+    name: "Online service",
+    description: "Access to multiplayer games",
+    monthly: {
+      price: 1,
+    },
+    yearly: {
+      price: 10,
+    },
+  },
+  {
+    name: "Larger storage",
+    description: "Extra 1TB of cloud save",
+    monthly: {
+      price: 2,
+    },
+    yearly: {
+      price: 20,
+    },
+  },
+  {
+    name: "Customizable profile",
+    description: "Custom theme on your profile",
+    monthly: {
+      price: 2,
+    },
+    yearly: {
+      price: 20,
+    },
   },
 ];

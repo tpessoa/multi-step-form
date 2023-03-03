@@ -43,7 +43,7 @@ const Plan = () => {
             });
           }}
         >
-          <Tab.List className="mt-10 inline-flex space-x-4">
+          <Tab.List className="inline-flex space-x-4">
             {planCardsData.map((card, index) => (
               <Tab key={index} className="focus:outline-none">
                 {({ selected }) => (
