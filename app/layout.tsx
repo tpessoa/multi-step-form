@@ -15,8 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head></head>
       <body>
-        <div className="h-screen bg-sky-50 body-font font-ubuntu">
+        <div className="body-font h-screen bg-sky-50 font-ubuntu">
           <StoreProvider>{children}</StoreProvider>
         </div>
       </body>
