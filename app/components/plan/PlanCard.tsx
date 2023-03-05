@@ -1,19 +1,9 @@
-import { display } from "@/app/types/type";
+import { Plan } from "@/app/types/type";
 import { clsx } from "clsx";
 import Image from "next/image";
 import React from "react";
 
-export type PlanCardProps = {
-  icon: any;
-  name: string;
-  monthly: {
-    price: number;
-  };
-  yearly: {
-    freeMonths: number;
-    price: number;
-  };
-  display: display.MONTHLY | display.YEARLY;
+export type PlanCardProps = Plan & {
   selected: boolean;
 };
 

@@ -9,12 +9,36 @@ export enum display {
   YEARLY = "yearly",
 }
 export type PlanStepForm = {
-  name: string;
+  code: number;
   plan: display;
-  price: number;
 };
 
 export type AddOnStepForm = {
+  code: number;
+};
+
+export type Plan = {
+  code: number;
   name: string;
-  price: number;
+  icon: any;
+  display: display.MONTHLY | display.YEARLY;
+  monthly: {
+    price: number;
+  };
+  yearly: {
+    freeMonths: number;
+    price: number;
+  };
+};
+
+export type AddOn = {
+  code: number;
+  name: string;
+  description: string;
+  monthly: {
+    price: number;
+  };
+  yearly: {
+    price: number;
+  };
 };

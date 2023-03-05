@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { PersonalStepForm } from "../../types/type";
 import { StoreContext } from "../../utils/store";
 import Title from "../Title";
+import FormButton from "../FormButton";
 
 const SchemaValidator = Yup.object().shape({
   name: Yup.string()
@@ -25,12 +26,12 @@ const Personal = () => {
   console.log(personalStep);
 
   return (
-    <div className="relative h-full">
-      <Title
-        title="Personal info"
-        subTitle="Please provide your name, email address, and phone number."
-      />
-      <div className="mt-8">
+    <div className="mx-auto flex h-full w-[400px] flex-col items-stretch">
+      <div className="flex-grow">
+        <Title
+          title="Personal info"
+          subTitle="Please provide your name, email address, and phone number."
+        />
         <Formik
           initialValues={{
             name: personalStep.name,
@@ -59,6 +60,7 @@ const Personal = () => {
           )}
         </Formik>
       </div>
+      <FormButton previous={false} next={true} />
     </div>
   );
 };

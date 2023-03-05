@@ -2,9 +2,11 @@
 
 import { useContext } from "react";
 import AddOns from "./components/add-ons/AddOns";
+import FormButton from "./components/FormButton";
 import Personal from "./components/info/Personal";
 import Plan from "./components/plan/Plan";
 import Stepper from "./components/stepper/Stepper";
+import Summary from "./components/summary/Summary";
 import { StoreContext } from "./utils/store";
 
 export default function Home() {
@@ -17,6 +19,8 @@ export default function Home() {
     step = <Plan />;
   } else if (currentStep === 2) {
     step = <AddOns />;
+  } else if (currentStep === 3) {
+    step = <Summary />;
   }
 
   return (
@@ -25,7 +29,7 @@ export default function Home() {
         <div className="block">
           <Stepper />
         </div>
-        <div className="flex w-full justify-center px-10 py-8">{step}</div>
+        <div className="w-full px-10 py-8">{step}</div>
       </div>
     </div>
   );

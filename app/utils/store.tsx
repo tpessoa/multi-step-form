@@ -28,18 +28,15 @@ type StoreContext = {
 export const StoreContext = createContext<StoreContext>({} as StoreContext); //just a dummy cast for initialization
 
 const StoreProvider = ({ children }: PropsWithChildren) => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [personalStep, setPersonalStep] = useState<PersonalStepForm>({
     name: "",
     email: "",
     phoneNumber: "",
   });
-  const selectedPlanIndex =
-    planCardsData.findIndex((plan) => plan.selected) ?? 0;
   const [planStep, setPlanStep] = useState<PlanStepForm>({
-    name: planCardsData[selectedPlanIndex].name,
+    code: 0,
     plan: display.MONTHLY,
-    price: planCardsData[selectedPlanIndex][display.MONTHLY].price,
   });
   const [addOnStep, setAddOnStep] = useState<AddOnStepForm[]>([]);
 
