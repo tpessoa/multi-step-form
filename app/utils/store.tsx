@@ -27,7 +27,7 @@ type StoreContext = {
 export const StoreContext = createContext<StoreContext>({} as StoreContext); //just a dummy cast for initialization
 
 const StoreProvider = ({ children }: PropsWithChildren) => {
-  const [currentStep, setCurrentStep] = useState(4);
+  const [currentStep, setCurrentStep] = useState(0);
   const [personalStep, setPersonalStep] = useState<PersonalStepForm>({
     name: "",
     email: "",
