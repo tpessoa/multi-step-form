@@ -6,14 +6,14 @@ type FormButtonProps = {
   previous: boolean;
   next: boolean;
   confirm?: boolean;
-  updateStore?: () => void;
+  beforeChangingStep?: () => Promise<boolean | undefined>;
 };
 
 const FormButton = ({
   previous,
   next,
   confirm,
-  updateStore,
+  beforeChangingStep,
 }: FormButtonProps) => {
   const {
     currentStepState: { value: currentStep, setter: setCurrentStep },
@@ -37,8 +37,14 @@ const FormButton = ({
         <button
           type="submit"
           className="rounded-lg bg-blue-800 px-5 py-2 text-white hover:bg-blue-900"
-          onClick={() => {
-            setCurrentStep(currentStep + 1);
+          onClick={async () => {
+            if (beforeChangingStep) {
+              if (await beforeChangingStep?.()) {
+                setCurrentStep(currentStep + 1);
+              }
+            } else {
+              setCurrentStep(currentStep + 1);
+            }
           }}
         >
           Next step

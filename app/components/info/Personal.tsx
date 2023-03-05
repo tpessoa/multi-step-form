@@ -1,7 +1,7 @@
 "use client";
 
 import { Form, Formik, FormikHelpers, FormikProps } from "formik";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import Input from "./Input";
 import * as Yup from "yup";
 import { PersonalStepForm } from "../../types/type";
@@ -22,8 +22,12 @@ const Personal = () => {
   const {
     personalStepState: { value: personalStep, setter: setPersonalStep },
   } = useContext(StoreContext);
+  const first = useRef<FormikProps<PersonalStepForm>>(null);
 
-  console.log(personalStep);
+  const actionBeforeChangingStep = async () => {
+    await first.current?.submitForm();
+    return first.current?.isValid;
+  };
 
   return (
     <div className="mx-auto flex h-full w-[400px] flex-col items-stretch">
@@ -39,28 +43,27 @@ const Personal = () => {
             phoneNumber: personalStep.phoneNumber,
           }}
           validationSchema={SchemaValidator}
-          onSubmit={async (
-            values: PersonalStepForm,
-            { setSubmitting }: FormikHelpers<PersonalStepForm>
-          ) => {
-            console.log(values);
-            setSubmitting(true);
-
+          onSubmit={(values: PersonalStepForm) => {
             setPersonalStep(values);
-
-            setSubmitting(false);
           }}
+          innerRef={first}
         >
           {(props: FormikProps<PersonalStepForm>) => (
-            <Form className="space-y-5">
-              <Input label="Name" name="name" />
-              <Input label="Email Address" name="email" />
-              <Input label="Phone Number" name="phoneNumber" />
-            </Form>
+            <>
+              <Form className="space-y-5">
+                <Input label="Name" name="name" />
+                <Input label="Email Address" name="email" />
+                <Input label="Phone Number" name="phoneNumber" />
+              </Form>
+            </>
           )}
         </Formik>
       </div>
-      <FormButton previous={false} next={true} />
+      <FormButton
+        previous={false}
+        next={true}
+        beforeChangingStep={actionBeforeChangingStep}
+      />
     </div>
   );
 };

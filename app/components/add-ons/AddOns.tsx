@@ -21,10 +21,6 @@ const AddOns = () => {
     );
   }
 
-  function updateBeforeChangingView() {
-    console.log(addOnStep);
-  }
-
   return (
     <div className="flex h-full w-full flex-col">
       <div className="mx-auto flex h-full flex-col">
@@ -44,11 +40,7 @@ const AddOns = () => {
           ))}
         </div>
 
-        <FormButton
-          previous={true}
-          next={true}
-          updateStore={updateBeforeChangingView}
-        />
+        <FormButton previous={true} next={true} />
       </div>
     </div>
   );

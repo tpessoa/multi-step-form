@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import AddOns from "./components/add-ons/AddOns";
-import FormButton from "./components/FormButton";
+import Final from "./components/final/Final";
 import Personal from "./components/info/Personal";
 import Plan from "./components/plan/Plan";
 import Stepper from "./components/stepper/Stepper";
@@ -21,6 +21,8 @@ export default function Home() {
     step = <AddOns />;
   } else if (currentStep === 3) {
     step = <Summary />;
+  } else if (currentStep === 4) {
+    step = <Final />;
   }
 
   return (

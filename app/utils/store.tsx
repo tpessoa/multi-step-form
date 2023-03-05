@@ -11,7 +11,6 @@ import {
   PersonalStepForm,
   PlanStepForm,
 } from "../types/type";
-import { planCardsData } from "./data";
 
 type State<T> = {
   value: T;
@@ -28,7 +27,7 @@ type StoreContext = {
 export const StoreContext = createContext<StoreContext>({} as StoreContext); //just a dummy cast for initialization
 
 const StoreProvider = ({ children }: PropsWithChildren) => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(4);
   const [personalStep, setPersonalStep] = useState<PersonalStepForm>({
     name: "",
     email: "",
