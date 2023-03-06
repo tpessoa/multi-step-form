@@ -25,7 +25,7 @@ const PlanCard = ({
   return (
     <div
       className={clsx(
-        "w-32 space-y-12 rounded-xl border p-3 text-gray-400/80 hover:border-blue-900",
+        "flex w-full space-x-4 rounded-xl border p-3 text-gray-400/80 hover:border-blue-900 md:block md:w-32 md:space-y-12 md:space-x-0",
         selected && "border-blue-900 bg-blue-50"
       )}
     >

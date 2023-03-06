@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "sidebar-desktop": "url('/bg-sidebar-desktop.svg')",
+        "sidebar-mobile": "url('/bg-sidebar-mobile.svg')",
       },
       fontFamily: {
         ubuntu: ["Ubuntu"],

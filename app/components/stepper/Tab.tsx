@@ -9,27 +9,28 @@ type TabProps = {
 
 const Tab = ({ number, name, selected }: TabProps) => {
   return (
-    <div className="w-full inline-flex space-x-4 items-center">
+    <div className="mt-6 inline-flex space-x-4 md:mt-0 md:w-full md:items-center">
       <div
         className={clsx(
-          "w-7 h-7 rounded-full flex border-sky-50 border justify-center items-center",
-          selected && "bg-sky-200 border-0"
+          "flex h-7 w-7 items-center justify-center rounded-full border border-sky-50",
+          selected && "border-0 bg-sky-200"
         )}
       >
         <span
           className={clsx(
-            "text-xs font-bold text-white",
+            "text-xs font-bold",
+            !selected && "text-white",
             selected && "text-black"
           )}
         >
           {number}
         </span>
       </div>
-      <div>
-        <div className="uppercase font-semibold text-xs text-gray-400/80">
+      <div className="hidden md:block">
+        <div className="text-xs font-semibold uppercase text-gray-400/80">
           step {number}
         </div>
-        <div className="uppercase font-semibold text-white text-xs tracking-widest">
+        <div className="text-xs font-semibold uppercase tracking-widest text-white">
           {name}
         </div>
       </div>

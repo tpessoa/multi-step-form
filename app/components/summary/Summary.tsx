@@ -21,12 +21,12 @@ const Summary = () => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="mx-auto flex h-full flex-col">
+      <div className="flex h-full flex-col md:mx-auto">
         <Title
           title="Finishing up"
           subTitle="Double-check everthing looks OK before confirming."
         />
-        <div className="w-[400px] flex-grow">
+        <div className="flex-grow md:w-[400px]">
           <div className="rounded-md bg-indigo-50/50 p-6">
             <div className="flex justify-between text-sm font-bold text-blue-900">
               <div>

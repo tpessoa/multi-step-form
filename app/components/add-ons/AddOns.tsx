@@ -23,12 +23,12 @@ const AddOns = () => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="mx-auto flex h-full flex-col">
+      <div className="flex h-full flex-col md:mx-auto">
         <Title
           title="Pick add-ons"
           subTitle="Add-ons help enhance your gaming experience."
         />
-        <div className="w-[400px] flex-grow space-y-4">
+        <div className="flex-grow space-y-4 md:w-[400px]">
           {addOnCardsData.map((addOn) => (
             <AddOnCard
               key={addOn.code}

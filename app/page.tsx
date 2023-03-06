@@ -27,11 +27,13 @@ export default function Home() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="container flex h-3/5 max-w-4xl rounded-xl bg-white p-4 md:inline-flex">
+      <div className="container flex h-full max-w-4xl flex-col rounded-xl md:inline-flex md:h-3/5 md:flex-row md:bg-white md:p-4">
         <div className="block">
           <Stepper />
         </div>
-        <div className="w-full px-10 py-8">{step}</div>
+        <div className="h- absolute top-24 left-1/2 w-11/12 -translate-x-1/2 transform rounded-xl bg-white p-8 md:static md:left-0 md:top-0 md:w-full md:translate-x-0 md:rounded-none md:px-10">
+          {step}
+        </div>
       </div>
     </div>
   );

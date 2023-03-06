@@ -30,12 +30,12 @@ const Plan = () => {
 
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="mx-auto flex h-full flex-col">
+      <div className="flex h-full flex-col md:mx-auto">
         <Title
           title="Select your plan"
           subTitle="You have the option of monthly or yearly billing."
         />
-        <div className="flex-grow space-y-8">
+        <div className="flex-grow space-y-6 md:space-y-8">
           <Tab.Group
             defaultIndex={planCardsData.findIndex(
               (plan) => plan.code === planStep.code
@@ -47,7 +47,7 @@ const Plan = () => {
               });
             }}
           >
-            <Tab.List className="space-x-4">
+            <Tab.List className="flex flex-col space-y-3 md:block md:space-y-0 md:space-x-4">
               {planCardsData.map((card) => (
                 <Tab key={card.code} className="focus:outline-none">
                   {({ selected }) => (
@@ -58,7 +58,7 @@ const Plan = () => {
             </Tab.List>
           </Tab.Group>
           <div className="flex">
-            <div className="inline-flex flex-grow justify-center space-x-6 rounded-lg bg-gray-100/50 p-4">
+            <div className="inline-flex flex-grow justify-center space-x-6 rounded-lg bg-blue-50 p-4">
               <SwitchLabel label="Monthly" disabled={enabled} />
               <Switch
                 checked={enabled}

@@ -17,7 +17,8 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body>
-        <div className="body-font h-screen bg-sky-50 font-ubuntu">
+        <div id="root"></div>
+        <div className="body-font relative h-screen bg-sky-50 font-ubuntu">
           <StoreProvider>{children}</StoreProvider>
         </div>
       </body>

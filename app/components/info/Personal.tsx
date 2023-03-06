@@ -1,6 +1,6 @@
 "use client";
 
-import { Form, Formik, FormikHelpers, FormikProps } from "formik";
+import { Form, Formik, FormikProps } from "formik";
 import React, { useContext, useRef } from "react";
 import Input from "./Input";
 import * as Yup from "yup";
@@ -8,6 +8,7 @@ import { PersonalStepForm } from "../../types/type";
 import { StoreContext } from "../../utils/store";
 import Title from "../Title";
 import FormButton from "../FormButton";
+import { createRoot } from "react-dom/client";
 
 const SchemaValidator = Yup.object().shape({
   name: Yup.string()
@@ -30,7 +31,7 @@ const Personal = () => {
   };
 
   return (
-    <div className="mx-auto flex h-full w-[400px] flex-col items-stretch">
+    <div className="flex h-full flex-col items-stretch md:mx-auto md:w-[400px]">
       <div className="flex-grow">
         <Title
           title="Personal info"
