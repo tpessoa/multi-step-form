@@ -4,7 +4,13 @@ import Image from "next/image";
 const Final = () => {
   return (
     <div className="mx-auto flex h-full w-full flex-col items-center justify-center md:w-[440px]">
-      <Image src="icon-thank-you.svg" width={80} height={80} alt="thank-you" />
+      <Image
+        src="icon-thank-you.svg"
+        width={80}
+        height={80}
+        alt="thank-you"
+        priority={true}
+      />
       <div className="mt-8 text-3xl font-extrabold text-blue-900">
         Thank you!
       </div>

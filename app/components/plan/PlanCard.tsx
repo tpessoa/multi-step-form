@@ -29,7 +29,7 @@ const PlanCard = ({
         selected && "border-blue-900 bg-blue-50"
       )}
     >
-      <Image src={icon} width={42} height={42} alt={name} />
+      <Image src={icon} width={42} height={42} alt={name} priority={true} />
       <div className="space-y-1 text-left">
         <div className="text-sm font-semibold text-blue-900">{name}</div>
         <div className="text-sm text-gray-400/80">{price}</div>

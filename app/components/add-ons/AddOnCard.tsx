@@ -33,11 +33,10 @@ const AddOnCard = ({
   function addOnSelectionHandler(active: boolean) {
     active ? addAddOn({ code }) : removeAddOn({ code });
   }
-
   return (
     <div
       className={clsx(
-        "flex space-x-6 rounded-lg border px-4 py-4 text-gray-400 hover:border-blue-900",
+        "flex space-x-6 rounded-lg border px-4 py-4 text-gray-400 md:hover:border-blue-900",
         selected && "border-blue-900 bg-blue-50"
       )}
     >
