@@ -1,38 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
 
-## Getting Started
+<h3 align="center">Multi Step Form</h3>
 
-First, run the development server:
+  <p align="center">
+    Frontend Mentor Challenge - From design to code
+    <br>
+   <a href="https://tpessoa-multi-step-form.vercel.app/">LIVE DEMO</a>
+  </p>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Table of contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Briefe description](#briefe-description)
+- [Features](#features)
+- [Future improvements](#future-improvements)
+- [Thanks](#thanks)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Briefe description
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+The challenge is to build a multi-step form and get it looking as close as possible to the given design mockups. <a href="https://github.com/tpessoa/multi-step-form/tree/main/design">All the mocks are available here</a>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- A three-step form that generates varying summaries based on selected inputs.
+- State sharing implemented across the different steps
+- Cross-step validation performed to ensure accuracy and completeness of information.
+- Responsive across multiple screen sizes
 
-## Learn More
+## Future improvements
 
-To learn more about Next.js, take a look at the following resources:
+- Improve Personal info field validation
+- Send a real email with the summary
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Thanks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I would like to express my sincere appreciation to the creators of Frontend Mentor, a website that provides design mocks for front-end developers to hone their skills. As someone who is constantly striving to improve my abilities, I have found the resources on this website to be incredibly valuable in helping me to develop my proficiency in web development. The design mocks provided have been instrumental in allowing me to practice my skills in a practical and engaging manner, and I have no doubt that they will continue to benefit me in my professional endeavors. Thank you again for your contribution to the web development community.
